@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Congratulations Shwe 💚</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --green1:#0f766e;
+    --green2:#10b981;
+    --green3:#6ee7b7;
+    --glass:rgba(255,255,255,.15);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at top left,#34d399,transparent 35%),
+    radial-gradient(circle at bottom right,#10b981,transparent 35%),
+    linear-gradient(135deg,#042f2e,#065f46,#022c22);
+}
+
+.bg{
+    position:fixed;
+    inset:0;
+}
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:.35;
+    animation:float 10s infinite alternate;
+}
+
+.circle:nth-child(1){
+    width:250px;
+    height:250px;
+    background:#6ee7b7;
+    left:5%;
+    top:10%;
+}
+
+.circle:nth-child(2){
+    width:350px;
+    height:350px;
+    background:#10b981;
+    right:5%;
+    bottom:10%;
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-40px);}
+}
+
+.card{
+    width:min(90%,700px);
+    backdrop-filter:blur(25px);
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:32px;
+    padding:45px;
+    text-align:center;
+    color:white;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    position:relative;
+    z-index:2;
+    animation:appear 1.2s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,.15);
+    margin-bottom:18px;
+    font-size:14px;
+}
+
+h1{
+    font-size:clamp(2rem,5vw,3rem);
+    margin-bottom:10px;
+}
+
+.name{
+    color:#a7f3d0;
+}
+
+.score{
+    font-size:5rem;
+    font-weight:700;
+    margin:20px 0;
+    color:#d1fae5;
+    text-shadow:0 0 25px rgba(255,255,255,.4);
+}
+
+.line{
+    width:120px;
+    height:3px;
+    background:#6ee7b7;
+    margin:20px auto;
+    border-radius:10px;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+    margin:25px 0;
+}
+
+.box{
+    background:rgba(255,255,255,.08);
+    padding:15px;
+    border-radius:16px;
+}
+
+.label{
+    font-size:12px;
+    opacity:.8;
+}
+
+.value{
+    font-weight:600;
+    margin-top:5px;
+}
+
+.messageBtn{
+    margin-top:20px;
+    border:none;
+    padding:14px 28px;
+    border-radius:999px;
+    background:linear-gradient(90deg,#34d399,#10b981);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.messageBtn:hover{
+    transform:translateY(-3px);
+}
+
+.message{
+    max-height:0;
+    overflow:hidden;
+    transition:1s;
+    margin-top:20px;
+}
+
+.message.show{
+    max-height:400px;
+}
+
+.letter{
+    background:rgba(255,255,255,.08);
+    padding:20px;
+    border-radius:18px;
+    line-height:1.8;
+    color:#ecfdf5;
+}
+
+.footer{
+    margin-top:25px;
+    opacity:.8;
+    font-size:14px;
+}
+
+.sparkle{
+    position:absolute;
+    color:#d1fae5;
+    animation:rise linear infinite;
+}
+
+@keyframes rise{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{opacity:1;}
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(8px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:.4s;
+    z-index:1000;
+}
+
+.overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.letterModal{
+    width:min(90%,650px);
+    max-height:80vh;
+    background:rgba(10,40,30,.95);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:24px;
+    padding:30px;
+    color:#ecfdf5;
+    position:relative;
+}
+
+.letterModal h2{
+    margin-bottom:20px;
+    color:#a7f3d0;
+}
+
+.letterContent{
+    max-height:60vh;
+    overflow-y:auto;
+    padding-right:10px;
+    line-height:1.9;
+}
+
+.letterContent::-webkit-scrollbar{
+    width:8px;
+}
+
+.letterContent::-webkit-scrollbar-thumb{
+    background:#34d399;
+    border-radius:20px;
+}
+
+.closeBtn{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:#10b981;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg">
+    <div class="circle"></div>
+    <div class="circle"></div>
+</div>
+
+<div class="card">
+
+    <div class="badge">
+        ✨ Forensic Examination Achievement
+    </div>
+
+    <h1>
+        Congratulations
+        <span class="name">Shwe 💚</span>
+    </h1>
+
+    <div class="score" id="score">0</div>
+
+    <div class="line"></div>
+
+    <div class="info">
+
+        <div class="box">
+            <div class="label">Roll Number</div>
+            <div class="value">120</div>
+        </div>
+
+        <div class="box">
+            <div class="label">University</div>
+            <div class="value">
+                University of Medicine,<br>
+                Mandalay
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="label">Academic Year</div>
+            <div class="value">Year – 4</div>
+        </div>
+
+    </div>
+
+    <!-- <button class="messageBtn" onclick="showMessage()">
+        Open My Message 💌
+    </button>
+
+    <div class="message" id="message">
+
+        <div class="letter">
+            Dear Shwe,
+
+            <br><br>
+
+            Seeing your result made me genuinely happy.
+            Every late night, every hour of studying,
+            every bit of effort you invested has brought
+            you here today.
+
+            <br><br>
+
+            <b>74.5</b> is more than a number.
+            It represents your dedication,
+            resilience, and determination.
+
+            <br><br>
+
+            I am proud of the person you are
+            and excited for the amazing doctor
+            you are becoming.
+
+            <br><br>
+
+            Keep shining and keep believing in yourself.
+
+            <br><br>
+
+            ❤️ Always cheering for you.
+        </div>
+
+    </div> -->
+
+    <button class="messageBtn" onclick="openLetter()">
+    Open My Message 💌
+</button>
+
+<div class="overlay" id="overlay">
+
+    <div class="letterModal">
+
+        <button class="closeBtn" onclick="closeLetter()">
+            ✕
+        </button>
+
+        <h2>For Shwe 💚</h2>
+
+        <div class="letterContent">
+
+            <p>
+                Dear Shwe,
+            </p>
+
+            <p>
+                Seeing your result made me genuinely happy.
+                Every late night, every hour of studying,
+                every challenge you faced has led to this moment.
+            </p>
+
+            <p>
+                <strong>74.5</strong> is more than a mark.
+                It is proof of your discipline,
+                perseverance, and dedication.
+            </p>
+
+            <p>
+                I know how much effort you put into your studies,
+                and I hope you take a moment today to be proud of yourself.
+            </p>
+
+            <p>
+                Watching you grow, learn, and move closer
+                to becoming the doctor you dream of being
+                inspires me more than you know.
+            </p>
+
+            <p>
+                No matter what marks come in the future,
+                I will always admire your determination,
+                your kindness, and your strength.
+            </p>
+
+            <p>
+                Congratulations on your Forensic Examination result.
+            </p>
+
+            <p>
+                You deserve every bit of this success.
+            </p>
+
+            <p>
+                ❤️ Always cheering for you.
+            </p>
+
+            <p>
+                From KoKo.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="footer">
+        Crafted with love for Shwe ✨
+    </div>
+
+</div>
+
+<script>
+
+function animateScore(){
+    let score = 0;
+    const target = 74.5;
+
+    const timer = setInterval(()=>{
+        score += 0.5;
+
+        if(score >= target){
+            score = target;
+            clearInterval(timer);
+        }
+
+        document.getElementById('score').innerText =
+            score.toFixed(1);
+
+    },25);
+}
+
+animateScore();
+
+function showMessage(){
+    document
+      .getElementById('message')
+      .classList.toggle('show');
+}
+
+function createSparkle(){
+
+    const s = document.createElement('div');
+    s.classList.add('sparkle');
+
+    s.innerHTML = ['✨','💚','⭐'][Math.floor(Math.random()*3)];
+
+    s.style.left = Math.random()*100+'vw';
+    s.style.fontSize = (10+Math.random()*25)+'px';
+    s.style.animationDuration =
+        (6+Math.random()*6)+'s';
+
+    document.body.appendChild(s);
+
+    setTimeout(()=>{
+        s.remove();
+    },12000);
+}
+
+setInterval(createSparkle,350);
+
+function openLetter(){
+    document
+        .getElementById('overlay')
+        .classList.add('show');
+}
+
+function closeLetter(){
+    document
+        .getElementById('overlay')
+        .classList.remove('show');
+}
+
+</script>
+
+</body>
+</html>
