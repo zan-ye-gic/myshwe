@@ -281,8 +281,6 @@ h1{
 </head>
 <body>
 
-<audio src="./AThousandYears.mp3" autoplay loop></audio>
-
 <div class="bg">
     <div class="circle"></div>
     <div class="circle"></div>
@@ -494,6 +492,7 @@ function openLetter(){
     document
         .getElementById('overlay')
         .classList.add('show');
+    document.getElementById('bgMusic').play();
 }
 
 function closeLetter(){
@@ -503,6 +502,10 @@ function closeLetter(){
 }
 
 </script>
+
+<audio autoplay id="bgMusic">
+  <source src="./aty.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
